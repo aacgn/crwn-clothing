@@ -12,11 +12,13 @@ import {
   } from './collection.styles';
 
 function CollectionPage({ collection }) {
+    const { title, items } = collection;
+    
     return (
         <CollectionPageContainer>
-        <CollectionTitle>{collection.title}</CollectionTitle>
+        <CollectionTitle>{title}</CollectionTitle>
         <CollectionItemsContainer>
-          {collection.items.map(item => (
+          {items.map(item => (
             <CollectionItem key={item.id} item={item} />
           ))}
         </CollectionItemsContainer>
