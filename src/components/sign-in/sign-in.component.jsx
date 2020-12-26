@@ -42,7 +42,7 @@ export default class SignIn extends React.Component {
 
     render() {
         return (
-            <SignInContainer>
+          <SignInContainer>
             <SignInTitle>I already have an account</SignInTitle>
             <span>Sign in with your email and password</span>
     
@@ -65,7 +65,7 @@ export default class SignIn extends React.Component {
               />
               <ButtonsBarContainer>
                 <CustomButton type='submit'> Sign in </CustomButton>
-                <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
+                <CustomButton type='button' onClick={signInWithGoogle} isGoogleSignIn>
                   Sign in with Google
                 </CustomButton>
               </ButtonsBarContainer>

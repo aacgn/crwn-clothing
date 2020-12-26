@@ -54,7 +54,7 @@ export default class SignUp extends React.Component {
 
     render() {
         return (
-            <SignUpContainer>
+          <SignUpContainer>
             <SignUpTitle>I do not have a account</SignUpTitle>
             <span>Sign up with your email and password</span>
             <form className='sign-up-form' onSubmit={this.handleSubmit}>
