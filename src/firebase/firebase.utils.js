@@ -12,6 +12,21 @@ const config = {
     appId: "1:440043949480:web:e2472f35218affcb94a19d"
 };
 
+if (!firebase.apps.length) {
+    firebase.initializeApp(config);
+ } else {
+    firebase.app();
+ }
+
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();
+
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+
+googleProvider.setCustomParameters({
+    prompt:  'select_account'
+});
+
 export const createUserProfileDocument = async (userAuth, additionalData) => {
     if (!userAuth) return;
 
@@ -67,19 +82,11 @@ export const convertCollectionsSnapshotToMap = (collections) => {
     }, {});
 }
 
-if (!firebase.apps.length) {
-    firebase.initializeApp(config);
- } else {
-    firebase.app();
- }
-
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
-
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({
-    prompt:  'select_account'
-});
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
-
-export default firebase;
+export const getCurrentUser = () => {
+    return new Promise((resolve, reject) => {
+        const unsubscribe = auth.onAuthStateChanged(userAuth => {
+            unsubscribe();
+            resolve(userAuth);
+        }, reject);
+    })
+}
