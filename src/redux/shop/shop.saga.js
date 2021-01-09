@@ -28,6 +28,6 @@ function* fetchCollectionStart() {
 
 export function* shopSaga() {
     yield all([
-        fetchCollectionStart
+        call(fetchCollectionStart)
     ])
 }

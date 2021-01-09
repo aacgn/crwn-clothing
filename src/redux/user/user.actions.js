@@ -1,5 +1,29 @@
 import UserActionTypes from './user.types';
 
+export function signUpStart(userCredentials) {
+    return {
+        type: UserActionTypes.SIGN_UP_START,
+        payload: userCredentials
+    }
+}
+
+export function signUpSuccess({ user, additionalData }) {
+    return {
+        type: UserActionTypes.SIGN_UP_SUCCESS,
+        payload: {
+            user,
+            additionalData
+        }
+    };
+}
+
+export function signUpFailure(errMessage) {
+    return {
+        type: UserActionTypes.SIGN_UP_FAILURE,
+        payload: errMessage
+    }
+}
+
 export function emailSignInStart(emailAndPassword) {
     return {
         type: UserActionTypes.EMAIL_SIGN_IN_START,
